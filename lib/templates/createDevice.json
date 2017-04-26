@@ -165,10 +165,6 @@
             "description": "Free form array of internal attributes for particular IOTAgents",
             "type": "any"
           },
-          "polling": {
-            "description": "Value for command",
-            "type": "boolean"
-          },          
           "static_attributes": {
             "description": "Free form array of data to be appended to the target entity",
             "type": "array"
