@@ -27,9 +27,49 @@ var config = {
         host: '192.168.56.101',
         port: '1026'
     },
+    
+    /**
+     * The ngsi request will be with ssl connections
+     */
+    ssl: {
+        active: true,
+        keyFile: 'certificados/server/key.pem',
+        certFile: 'certificados/server/cert.pem',
+        //ca: 'certificados/mqtt.perm',
+        rejectUnauthorized: false
+    },
+
+    /**
+     * Configuration of the Northbound server of the IoT Agent.
+     */
     server: {
-        port: 4041,
-        host: '0.0.0.0'
+        /**
+         * Port where the IoT Agent will be listening for requests.
+         */
+        port: 4061,
+        ssl : {
+            portSSL: 4062,
+        
+            /**
+             * This flag activates the HTTPS protocol in the server. The endpoint always listen to the indicated port
+             * independently of the chosen protocol.
+             */
+            active: true,
+
+            /**
+             * Key file to use for codifying the HTTPS requests. Only mandatory when the flag active is true.
+             */
+            keyFile: 'certificados/server/key.pem',
+
+            /**
+             * SSL Certificate to present to the clients. Only mandatory when the flag active is true.
+             */
+            certFile: 'certificados/server/cert.pem',
+
+            ca: '',
+            requestCert: false,
+            rejectUnauthorized: false                 
+        }       
     },
     authentication: {
         host: 'localhost',
